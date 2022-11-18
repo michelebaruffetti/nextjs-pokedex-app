@@ -11,7 +11,7 @@ const baseUrlPokemon = "https://pokeapi.co/api/v2/";
 const request = (url: string) => from(fetch(url).then((res) => res.json()));
 
 export const getAllPokemonUrl = () => {
-  const url = baseUrlPokemon + "pokemon?limit=100000&offset=0";
+  const url = baseUrlPokemon + "pokemon?limit=100&offset=0";
 
   const obs$ = from(fetch(url)).pipe(
     mergeMap((response: Response) => {
