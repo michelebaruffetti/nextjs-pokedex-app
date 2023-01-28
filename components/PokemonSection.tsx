@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button, Card, CardGroup, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import PokemonCard from "./PokemonCard";
 
 const PokemonSection: FC<{ allPokemon: any }> = ({ allPokemon }) => {
