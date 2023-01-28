@@ -1,7 +1,6 @@
 Roadmap pokedex:
-- creare layout component
-- creare card per pokemon (modal on click?) √
-- creare header
+
+- creare pagina dettaglio con dato variabile in ingresso [id ? o simili]
 - creare paginazione/limit
 - creare store e sistema filtri
 - cattura pokemon -> local storage
