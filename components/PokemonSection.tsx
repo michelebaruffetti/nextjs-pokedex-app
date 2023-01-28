@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { Card, Image } from "semantic-ui-react";
 
 const PokemonSection: FC<{ allPokemon: any }> = ({ allPokemon }) => {
   return (
     <>
-      <Card.Group>
+      {/* <Card.Group>
         {allPokemon.map((el: any) => (
           <Card key={el?.id}>
             <Image src={el?.sprites.other.dream_world.front_default} />
@@ -13,7 +12,7 @@ const PokemonSection: FC<{ allPokemon: any }> = ({ allPokemon }) => {
             </Card.Content>
           </Card>
         ))}
-      </Card.Group>
+      </Card.Group> */}
     </>
   );
 };
