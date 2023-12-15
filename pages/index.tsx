@@ -1,9 +1,18 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Layout from "../components/common/Layout";
-import { getAllPokemon } from "../queries/pokemon";
 import PokemonList from "../components/PokemonList";
+import { getAllPokemon } from "../queries/getPokemon";
+import { dehydrate, QueryClient, useQueryClient } from "react-query";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const Home: NextPage<{ allPokemon: any }> = ({ allPokemon }) => {
+interface HomeProps {
+  dehydratedState: unknown;
+}
+
+const Home: NextPage<HomeProps> = ({ dehydratedState }) => {
+  const queryClient = useQueryClient();
+  const allPokemon = queryClient.getQueryData("allPokemon");
+
   return (
     <Layout>
       <PokemonList allPokemon={allPokemon} />
@@ -12,9 +21,15 @@ const Home: NextPage<{ allPokemon: any }> = ({ allPokemon }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await getAllPokemon();
+  const queryClient = new QueryClient();
 
-  return { props: { allPokemon: res } };
+  await queryClient.prefetchQuery("allPokemon", getAllPokemon);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
 };
 
 export default Home;
