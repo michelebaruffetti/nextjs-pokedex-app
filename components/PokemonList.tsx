@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import PokemonCard from "./PokemonCard";
 
-const PokemonSection: FC<{ allPokemon: any }> = ({ allPokemon }) => {
+const PokemonList: FC<{ allPokemon: any }> = ({ allPokemon }) => {
   console.log({ allPokemon });
 
   return (
@@ -18,4 +18,4 @@ const PokemonSection: FC<{ allPokemon: any }> = ({ allPokemon }) => {
   );
 };
 
-export default PokemonSection;
+export default PokemonList;

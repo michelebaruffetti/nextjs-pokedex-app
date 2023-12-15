@@ -1,5 +1,6 @@
 Roadmap pokedex:
 
+- integrare react query
 - creare pagina dettaglio con dato variabile in ingresso [id ? o simili]
 - creare paginazione/limit
 - creare store e sistema filtri
