@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import PokemonCard from "./PokemonCard";
+import { PokemonDetail } from "../models/models";
 
 const PokemonList: FC<{ allPokemon: PokemonDetail[] | undefined }> = ({
   allPokemon,

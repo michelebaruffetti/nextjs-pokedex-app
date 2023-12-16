@@ -1,23 +1,23 @@
-interface PokemonBase {
+export interface PokemonBase {
   name: string;
   url: string;
 }
 
-interface ResponsePokemonBase {
+export interface ResponsePokemonBase {
   count: number;
   next: string | null;
   previous: string | null;
   results: PokemonBase[];
 }
 
-interface PaginationData {
+export interface PaginationData {
   totalCount: number;
   nextPage: string | null;
   prevPage: string | null;
 }
 
 //single pokemon detail interface
-interface PokemonDetail {
+export interface PokemonDetail {
   abilities?: Ability[];
   base_experience: number;
   forms?: PokemonForm[];

@@ -1,3 +1,9 @@
+import {
+  PaginationData,
+  PokemonDetail,
+  ResponsePokemonBase,
+} from "../models/models";
+
 const fetchPokemonDetails = async (url: string): Promise<PokemonDetail> => {
   const response = await fetch(url);
 

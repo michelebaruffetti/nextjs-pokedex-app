@@ -6,6 +6,7 @@ import { dehydrate, QueryClient, useQueryClient } from "react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Pagination from "../components/Pagination";
+import { PaginationData, PokemonDetail } from "../models/models";
 
 const Home: NextPage = ({
   initialPokemonList,
