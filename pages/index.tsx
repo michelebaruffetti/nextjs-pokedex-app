@@ -5,6 +5,7 @@ import { getAllPokemon } from "../queries/getPokemon";
 import { dehydrate, QueryClient, useQueryClient } from "react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import Pagination from "../components/Pagination";
 
 const Home: NextPage = ({
   initialPokemonList,
@@ -33,9 +34,7 @@ const Home: NextPage = ({
   return (
     <Layout>
       <PokemonList allPokemon={pokemonList} />
-      {pagination?.nextPage && (
-        <button onClick={handleLoadMore}>Load More</button>
-      )}
+      {pagination?.nextPage && <Pagination handleLoadMore={handleLoadMore} />}
     </Layout>
   );
 };
