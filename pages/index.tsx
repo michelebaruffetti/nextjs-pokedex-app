@@ -4,9 +4,10 @@ import PokemonList from "../components/PokemonList";
 import { getAllPokemon } from "../queries/getPokemon";
 import { dehydrate, QueryClient, useQueryClient } from "react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import { PaginationData, PokemonDetail } from "../models/models";
+import styles from "../styles/Home.module.scss";
 
 const Home: NextPage = ({
   initialPokemonList,
@@ -17,11 +18,19 @@ const Home: NextPage = ({
 }) => {
   const [pokemonList, setPokemonList] = useState(initialPokemonList);
   const [pagination, setPagination] = useState(initialPagination);
+  const [loading, setLoading] = useState(true);
 
   const handleLoadMore = async () => {
     if (pagination?.nextPage) {
+      setLoading(true);
       const { pokemonList: newPokemonList, pagination: newPagination } =
         await getAllPokemon(pagination.nextPage);
+
+      //workaround to make appear and disappear the loader in a time useful to see it
+      //without making flash - usually not necessary since the API are not so fast
+      //but here happens often!
+      const delay = new Promise((resolve) => setTimeout(resolve, 500));
+      await delay;
 
       setPokemonList((prevPokemonList) => [
         ...(prevPokemonList ?? []),
@@ -31,8 +40,25 @@ const Home: NextPage = ({
       setPagination(newPagination);
     }
   };
+
+  useEffect(() => {
+    setLoading(false);
+  }, [pokemonList]);
+
   return (
     <Layout>
+      {loading && (
+        <div className={styles.overlay}>
+          <div className={styles["spinner-container"]}>
+            <div
+              className={`spinner-border text-primary ${styles["custom-spinner"]}`}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      )}
       <PokemonList allPokemon={pokemonList} />
       {pagination?.nextPage && <Pagination handleLoadMore={handleLoadMore} />}
     </Layout>
