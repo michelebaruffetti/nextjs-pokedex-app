@@ -18,7 +18,7 @@ export const getAllPokemon = async (): Promise<any[]> => {
     throw new Error("Failed to fetch Pokemon data");
   }
 
-  const data = await response.json();
+  const data: ResponsePokemonBase = await response.json();
   const pokemonList: any[] = await Promise.all(
     data.results.map((result: any) => fetchPokemonDetails(result.url))
   );

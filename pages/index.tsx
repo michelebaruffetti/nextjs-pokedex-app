@@ -5,11 +5,7 @@ import { getAllPokemon } from "../queries/getPokemon";
 import { dehydrate, QueryClient, useQueryClient } from "react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-interface HomeProps {
-  dehydratedState: unknown;
-}
-
-const Home: NextPage<HomeProps> = ({ dehydratedState }) => {
+const Home: NextPage = () => {
   const queryClient = useQueryClient();
   const allPokemon = queryClient.getQueryData("allPokemon");
 
