@@ -5,7 +5,11 @@ const Pagination = ({ handleLoadMore }: { handleLoadMore: () => void }) => {
     <Container className="mb-4">
       <Row>
         <Col>
-          <Button size="lg" variant="outline-primary" onClick={handleLoadMore}>
+          <Button
+            size="lg"
+            variant="outline-primary"
+            onClick={() => handleLoadMore()}
+          >
             Load More
           </Button>
         </Col>

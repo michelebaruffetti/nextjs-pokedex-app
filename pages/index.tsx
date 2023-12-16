@@ -15,7 +15,6 @@ const Home: NextPage = ({
   initialPokemonList?: PokemonDetail[];
   initialPagination?: PaginationData;
 }) => {
-  const queryClient = useQueryClient();
   const [pokemonList, setPokemonList] = useState(initialPokemonList);
   const [pagination, setPagination] = useState(initialPagination);
 
@@ -43,8 +42,6 @@ const Home: NextPage = ({
 export const getServerSideProps: GetServerSideProps = async () => {
   const queryClient = new QueryClient();
   const { pokemonList, pagination } = await getAllPokemon();
-
-  await queryClient.prefetchQuery("allPokemon", () => getAllPokemon());
 
   return {
     props: {
