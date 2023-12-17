@@ -22,7 +22,14 @@ const PokemonCard: FC<{ singlePokemon: PokemonDetail }> = ({
       </div>
       <Card.Img
         variant="top"
-        src={singlePokemon?.sprites.other.dream_world.front_default}
+        src={
+          singlePokemon?.sprites.other.dream_world.front_default ??
+          singlePokemon?.sprites.other.home.front_default ??
+          singlePokemon?.sprites.versions.generation_v?.black_white
+            .front_default ??
+          singlePokemon?.sprites.front_default ??
+          "/pokeball.svg"
+        }
         style={{ height: "200px" }}
       />
       <Card.Body>
