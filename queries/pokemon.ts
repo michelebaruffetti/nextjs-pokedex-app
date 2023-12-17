@@ -1,3 +1,5 @@
+// vecchia impostazione con RxJs
+
 import {
   catchError,
   forkJoin,

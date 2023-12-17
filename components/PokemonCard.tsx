@@ -1,14 +1,29 @@
 import { FC } from "react";
 import { Button, Card } from "react-bootstrap";
 import { typecolors } from "../utils/typecolors";
+import { PokemonDetail } from "../models/models";
+import styles from "../styles/PokemonCard.module.scss";
 
-const PokemonCard: FC<{ singlePokemon: any }> = ({ singlePokemon }) => {
+const PokemonCard: FC<{ singlePokemon: PokemonDetail }> = ({
+  singlePokemon,
+}) => {
   return (
     <Card className="flex-fill p-3">
+      <div className="d-flex justify-content-between">
+        <p style={{ margin: "0", fontSize: "18px" }}>#{singlePokemon.id}</p>
+
+        <div className={styles.pokeballContainer}>
+          <img
+            src="/pokeball.svg"
+            alt="Pokeball"
+            className={styles.pokeballImage}
+          />
+        </div>
+      </div>
       <Card.Img
         variant="top"
         src={singlePokemon?.sprites.other.dream_world.front_default}
-        style={{ maxHeight: "200px" }}
+        style={{ height: "200px" }}
       />
       <Card.Body>
         <Card.Title className="ms-1">
@@ -16,12 +31,15 @@ const PokemonCard: FC<{ singlePokemon: any }> = ({ singlePokemon }) => {
         </Card.Title>
         {/* <Card.Text> */}
         <div className="my-2">
-          {singlePokemon?.types.map((type: any, index: number) => {
+          {singlePokemon?.types!.map((type, index: number) => {
             return (
               <p
                 key={index + Date.now()}
-                className="card-text btn m-0 me-2 text-uppercase text-white"
-                style={{ backgroundColor: (typecolors as any)[type.type.name] }}
+                className="card-text btn m-0 me-2 mb-1 fs-6 text-uppercase text-white"
+                style={{
+                  backgroundColor:
+                    typecolors[type.type.name as keyof typeof typecolors],
+                }}
               >
                 {type.type.name}
               </p>
@@ -29,7 +47,7 @@ const PokemonCard: FC<{ singlePokemon: any }> = ({ singlePokemon }) => {
           })}
         </div>
         {/* </Card.Text> */}
-        <Button variant="primary">Go somewhere</Button>
+        {/* <Button variant="primary">Go somewhere</Button> */}
       </Card.Body>
     </Card>
   );

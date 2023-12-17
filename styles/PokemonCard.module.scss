@@ -1,0 +1,13 @@
+.pokeballContainer {
+  .pokeballImage {
+    cursor: pointer;
+    width: 30px;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: #f0f0f0;
+    }
+  }
+}
